@@ -2,343 +2,328 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ficha de Acolhimento Integrativo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; }
-  body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f4f1ea; margin: 0; padding: 20px; color: #2e2a24;
-  }
-  .container {
-    max-width: 800px; margin: 0 auto; background: #fff;
-    border-radius: 14px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    padding: 32px 28px;
-  }
-  h1 { font-size: 1.5rem; text-align: center; color: #5a4a3a; margin-bottom: 4px; }
-  .subtitle { text-align: center; font-size: 0.9rem; color: #8a7a6a; margin-bottom: 28px; font-style: italic; }
-  h2 { font-size: 1.05rem; color: #6b5540; border-bottom: 2px solid #e8dfd2; padding-bottom: 6px; margin-top: 32px; }
-  label { display: block; margin: 14px 0 4px; font-weight: 600; font-size: 0.92rem; }
-  input[type="text"], input[type="date"], input[type="time"], input[type="number"], textarea, select {
-    width: 100%; padding: 9px 12px; border: 1px solid #d5cbbd; border-radius: 8px;
-    font-size: 0.95rem; font-family: inherit; background: #fdfcf9;
-  }
-  textarea { min-height: 70px; resize: vertical; }
-  .row { display: flex; gap: 12px; flex-wrap: wrap; }
-  .row > div { flex: 1; min-width: 140px; }
-  .check-group { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; margin: 8px 0 4px; }
-  .check-group label { font-weight: 400; display: flex; align-items: center; gap: 7px; margin: 0; font-size: 0.9rem; }
-  .check-group input[type="checkbox"] { width: 17px; height: 17px; accent-color: #8a6d4f; }
-  .btn {
-    display: block; width: 100%; margin-top: 34px; padding: 16px;
-    background: #25D366; color: #fff; font-size: 1.05rem; font-weight: 700;
-    border: none; border-radius: 10px; cursor: pointer; transition: background 0.2s;
-  }
-  .btn:hover { background: #1eb85a; }
-  .btn-preview {
-    display: block; width: 100%; margin-top: 12px; padding: 14px;
-    background: #6b5540; color: #fff; font-size: 0.95rem; font-weight: 600;
-    border: none; border-radius: 10px; cursor: pointer;
-  }
-  .btn-preview:hover { background: #58432f; }
-  .note { text-align: center; font-size: 0.78rem; color: #9a8a7a; margin-top: 10px; }
-  #preview {
-    margin-top: 24px; padding: 18px; background: #faf8f3;
-    border: 1px solid #e0d6c8; border-radius: 10px; white-space: pre-wrap;
-    font-size: 0.85rem; line-height: 1.5; display: none;
-  }
-  #preview h3 { margin: 0 0 10px; color: #6b5540; font-size: 1rem; }
-  #previewBox { max-height: 400px; overflow-y: auto; }
-  @media (max-width: 520px) {
-    .check-group { grid-template-columns: 1fr; }
-    .container { padding: 22px 16px; }
-  }
+:root{--bg:#fdfbf7;--card:#ffffff;--sage:#8da399;--sage-dark:#5a6d65;--terracota:#d4a373;--text:#2b2b2b;--muted:#7a7a7a;--border:#e8e0d6;--radius:18px}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+header{padding:40px 20px 20px;text-align:center;background:linear-gradient(180deg,#fdfbf7 0%,#f5efe6 100%);border-bottom:1px solid var(--border)}
+header h1{font-family:Fraunces,serif;font-size:32px;margin:0;color:var(--sage-dark)}header p{color:var(--muted);margin:8px 0 0}
+.wrap{max-width:900px;margin:0 auto;padding:24px}
+.progress{position:sticky;top:0;z-index:10;background:rgba(253,251,247,.9);backdrop-filter:blur(8px);padding:12px 0;border-bottom:1px solid var(--border);margin-bottom:20px}
+.bar{height:8px;background:#eee;border-radius:999px;overflow:hidden}.bar div{height:100%;background:var(--sage);transition:.3s}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.03)}
+.card h2{font-family:Fraunces,serif;font-size:20px;margin:0 0 4px;color:var(--sage-dark)}.card .sub{font-size:13px;color:var(--muted);margin-bottom:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.grid2{grid-template-columns:1fr}}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}@media(max-width:700px){.grid3{grid-template-columns:1fr}}
+label{font-size:13px;font-weight:600;display:block;margin-bottom:6px}input[type=text],input[type=date],input[type=time],input[type=tel],input[type=email],textarea,select{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;font-family:Inter;font-size:14px;background:#fffcf8;outline:none}input:focus,textarea:focus{border-color:var(--sage);box-shadow:0 0 0 3px rgba(141,163,153,.2)}
+textarea{min-height:90px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{display:flex;align-items:center;gap:6px;background:#f7f1e8;border:1px solid var(--border);padding:8px 12px;border-radius:999px;font-size:13px;cursor:pointer;user-select:none}.chip input{accent-color:var(--sage-dark)}
+.radio-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{appearance:none;border:0;border-radius:12px;padding:14px 22px;font-weight:700;font-size:15px;cursor:pointer}
+.btn-primary{background:var(--sage-dark);color:white;width:100%} .btn-primary:hover{background:#4a5c55}
+.btn-ghost{background:#fff;border:1px solid var(--border)}
+.actions{display:flex;gap:10px;margin-top:10px}
+small.help{color:var(--muted);font-size:11px}
+.tag{display:inline-block;background:#eaf0ec;color:var(--sage-dark);padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;margin-bottom:8px}
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>📋 Ficha de Acolhimento Integrativo</h1>
-  <p class="subtitle">Um espaço seguro para você se expressar</p>
+<header>
+<h1>Ficha de Acolhimento Integrativo</h1>
+<p>Um espaço seguro para você se expressar com verdade e acolhimento</p>
+<p style="font-size:12px;margin-top:12px">Terapeuta: Leandro Rocha • WhatsApp: (41) 99682-4622</p>
+</header>
+<div class="wrap">
+<div class="progress"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><span id="progText">0% preenchido</span><span>Envio via WhatsApp</span></div><div class="bar"><div id="barFill" style="width:0%"></div></div></div>
 
-  <form id="fichaForm" onsubmit="return false;">
+<form id="ficha">
 
-    <h2>Dados Pessoais</h2>
-    <label>Nome completo</label>
-    <input type="text" id="nome" placeholder="Seu nome">
+<div class="card">
+<h2>Dados Gerais</h2><div class="sub">Informações básicas</div>
+<div class="grid3">
+<div><label>Data do Acolhimento</label><input type="date" name="data_acolhimento"></div>
+<div><label>Horário</label><input type="time" name="horario"></div>
+<div><label>Cidade / UF</label><input type="text" name="cidade" placeholder="Curitiba / PR"></div>
+</div>
+<div class="grid2" style="margin-top:14px">
+<div><label>Nome Completo *</label><input type="text" name="nome" required placeholder="Seu nome"></div>
+<div><label>Data de Nascimento</label><input type="date" name="nascimento"></div>
+</div>
+<div class="grid2" style="margin-top:14px">
+<div><label>Endereço (opcional)</label><input type="text" name="endereco"></div>
+<div><label>Contato Tel / E-mail *</label><input type="text" name="contato" required placeholder="(41) 9... / seu@email.com"></div>
+</div>
+<div class="grid3" style="margin-top:14px">
+<div><label>Gênero</label><input type="text" name="genero" placeholder="Como se identifica"></div>
+<div><label>Estado Civil</label><select name="estado_civil"><option value="">Selecione</option><option>Solteiro(a)</option><option>Casado(a)</option><option>União estável</option><option>Divorciado(a)</option><option>Viúvo(a)</option></select></div>
+<div><label>Profissão</label><input type="text" name="profissao"></div>
+</div>
+<div class="grid3" style="margin-top:14px">
+<div><label>Religião / Prática Espiritual</label><input type="text" name="religiao"></div>
+<div><label>Escolaridade</label><input type="text" name="escolaridade"></div>
+<div><label>Filhos</label><div class="radio-row"><label class="chip"><input type="radio" name="filhos" value="Não"> Não</label><label class="chip"><input type="radio" name="filhos" value="Sim"> Sim</label><input type="text" name="filhos_qtd" placeholder="Quantos?" style="width:90px"></div></div>
+</div>
+</div>
 
-    <div class="row">
-      <div><label>Data de Nascimento</label><input type="date" id="nasc"></div>
-      <div><label>Horário (se souber)</label><input type="time" id="hora"></div>
-    </div>
+<div class="card">
+<span class="tag">Seção 1</span>
+<h2>Como você está chegando aqui?</h2>
+<label>Descreva suas queixas principais / o que te trouxe até aqui</label><textarea name="queixas_principais" placeholder="Descreva livremente..."></textarea>
+<div class="grid2" style="margin-top:14px">
+<div><label>Principal queixa em 1 frase</label><input type="text" name="queixa_frase"></div>
+<div><label>Intensidade 0-10</label><select name="intensidade"><option value="">Selecione</option><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div>
+</div>
+<div class="grid2" style="margin-top:14px">
+<div><label>Há quanto tempo sente isso?</label><input type="text" name="tempo_queixa"></div>
+<div><label>Identifica gatilho ou origem?</label><input type="text" name="gatilho"></div>
+</div>
+<div style="margin-top:14px"><label>Já conhece Terapia Floral?</label><div class="radio-row"><label class="chip"><input type="radio" name="conhece_floral" value="Sim"> Sim</label><label class="chip"><input type="radio" name="conhece_floral" value="Não"> Não</label></div><input type="text" name="floral_explicacao" placeholder="Breve explicação foi dada?" style="margin-top:8px"></div>
+</div>
 
-    <label>Cidade / UF</label>
-    <input type="text" id="cidade" placeholder="Ex: Curitiba – PR">
+<div class="card">
+<span class="tag">Seção 2</span>
+<h2>Mapa do seu Corpo</h2>
+<label>Dores ou tensões - Onde?</label><input type="text" name="dores" placeholder="Ex: lombar, ombros, cabeça...">
+<div style="margin-top:14px"><label>Energia</label><div class="chips">
+<label class="chip"><input type="checkbox" name="energia" value="Cansaço físico constante / Baixa energia"> Cansaço físico constante / Baixa energia</label>
+<label class="chip"><input type="checkbox" name="energia" value="Energia oscilante"> Energia oscilante</label>
+<label class="chip"><input type="checkbox" name="energia" value="Sente-se bem disposto"> Sente-se bem disposto</label>
+</div></div>
+<div class="grid2" style="margin-top:14px">
+<div><label>Sono</label><div class="chips"><label class="chip"><input type="checkbox" name="sono" value="Dorme bem"> Dorme bem</label><label class="chip"><input type="checkbox" name="sono" value="Dorme mal"> Dorme mal</label><label class="chip"><input type="checkbox" name="sono" value="Acorda muitas vezes"> Acorda muitas vezes</label><label class="chip"><input type="checkbox" name="sono" value="Oscilação de qualidade"> Oscilação</label></div><input type="text" name="sono_porque" placeholder="Por que? Como é seu sono?" style="margin-top:8px"></div>
+<div><label>Alimentação / Hidratação</label><input type="text" name="alimentacao"></div>
+</div>
+<div class="grid2" style="margin-top:14px">
+<div><label>Doenças crônicas</label><div class="chips"><label class="chip"><input type="checkbox" name="doencas" value="Hipertensão"> Hipertensão</label><label class="chip"><input type="checkbox" name="doencas" value="Diabetes"> Diabetes</label><label class="chip"><input type="checkbox" name="doencas" value="Outras"> Outras</label></div><input type="text" name="doencas_outras" placeholder="Quais?" style="margin-top:8px"></div>
+<div><label>Cirurgias</label><input type="text" name="cirurgias"></div>
+</div>
+<div class="grid2" style="margin-top:14px">
+<div><label>Medicamentos em uso</label><div class="radio-row"><label class="chip"><input type="radio" name="medicamentos_uso" value="Não"> Não</label><label class="chip"><input type="radio" name="medicamentos_uso" value="Sim"> Sim</label></div><input type="text" name="medicamentos_quais" placeholder="Quais?" style="margin-top:8px"></div>
+<div><label>Hábitos</label><div class="chips"><label class="chip"><input type="checkbox" name="habitos" value="Exercício físico"> Exercício físico</label><label class="chip"><input type="checkbox" name="habitos" value="Tabagismo"> Tabagismo</label><label class="chip"><input type="checkbox" name="habitos" value="Álcool"> Álcool</label><label class="chip"><input type="checkbox" name="habitos" value="Outras substâncias"> Outras substâncias</label></div></div>
+</div>
+<div style="margin-top:14px"><label>Manias / comportamentos repetitivos</label><input type="text" name="manias"></div>
+</div>
 
-    <div class="row">
-      <div><label>Contato (opcional)</label><input type="text" id="contato" placeholder="Tel ou e-mail"></div>
-      <div><label>Profissão</label><input type="text" id="profissao"></div>
-    </div>
+<div class="card">
+<span class="tag">Seção 3</span>
+<h2>Mapa das suas Emoções</h2><div class="sub">Marque o que sente com frequência</div>
+<div class="chips" id="emocoesGroup">
+<label class="chip"><input type="checkbox" name="emocoes" value="Ansiedade"> Ansiedade</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Medo"> Medo</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Insegurança"> Insegurança</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Cansaço mental"> Cansaço mental</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Sensação de sobrecarga"> Sobrecarga</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Dificuldade de dizer Não"> Dificuldade de dizer Não</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Solidão interna"> Solidão interna</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Sensibilidade emocional elevada"> Sensibilidade elevada</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Pânico"> Pânico</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Tristeza profunda"> Tristeza profunda</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Angústia"> Angústia</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Vazio interno"> Vazio interno</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Mágoa/Ressentimento"> Mágoa/Ressentimento</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Culpa"> Culpa</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Raiva"> Raiva</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Indecisão"> Indecisão</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Falta de direção"> Falta de direção</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Apatia"> Apatia</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Submissão"> Submissão</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Rigidez"> Rigidez</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Ciúmes"> Ciúmes</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Estagnação"> Estagnação</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Timidez excessiva"> Timidez excessiva</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Ideias obsessivas"> Ideias obsessivas</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Falta de concentração"> Falta de concentração</label>
+<label class="chip"><input type="checkbox" name="emocoes" value="Desconexão"> Desconexão</label>
+</div>
+<div class="grid2" style="margin-top:14px">
+<div><label>Outros (emoções)</label><input type="text" name="emocoes_outros"></div>
+<div><label>Emoção predominante hoje</label><input type="text" name="emocao_hoje"></div>
+</div>
+<div style="margin-top:14px"><label>Sintomas ligados a ciclo hormonal</label><div class="chips"><label class="chip"><input type="checkbox" name="hormonal" value="TPM"> TPM</label><label class="chip"><input type="checkbox" name="hormonal" value="Menopausa/Andropausa"> Menopausa/Andropausa</label></div><input type="text" name="hormonal_sintomas" placeholder="Sintomas" style="margin-top:8px"></div>
+</div>
 
-    <div class="row">
-      <div><label>Estado Civil</label><input type="text" id="estadocivil"></div>
-      <div><label>Religião / Prática Espiritual</label><input type="text" id="religiao"></div>
-    </div>
+<div class="card">
+<span class="tag">Seção 4</span>
+<h2>Padrões e História</h2>
+<div class="grid2">
+<div><label>Mãe - Viva/Falecida e Relacionamento</label><input type="text" name="mae" placeholder="Viva, relacionamento bom/distante..."></div>
+<div><label>Pai - Vivo/Falecido e Relacionamento</label><input type="text" name="pai"></div>
+</div>
+<div class="grid2" style="margin-top:14px">
+<div><label>Irmãos - Quantos e Relacionamento</label><input type="text" name="irmaos"></div>
+<div><label>Parceiro(a)/Cônjuge</label><input type="text" name="parceiro"></div>
+</div>
+<div style="margin-top:14px"><label>Filhos (relação)</label><input type="text" name="filhos_relacao"></div>
+<label style="margin-top:14px">Fale um pouco da sua infância</label><textarea name="infancia"></textarea>
+<div class="grid2" style="margin-top:14px">
+<div><label>Vida Profissional - Gosta do que faz?</label><div class="radio-row"><label class="chip"><input type="radio" name="gosta_trabalho" value="Sim"> Sim</label><label class="chip"><input type="radio" name="gosta_trabalho" value="Não"> Não</label></div><input type="text" name="trabalho_porque" placeholder="Por que?" style="margin-top:8px"></div>
+<div><label>Se não, já pensou em mudar?</label><div class="radio-row"><label class="chip"><input type="radio" name="pensou_mudar" value="Sim"> Sim</label><label class="chip"><input type="radio" name="pensou_mudar" value="Não"> Não</label></div></div>
+</div>
+<label style="margin-top:14px">O que te mantém nesse trabalho?</label><input type="text" name="mantem_trabalho">
+<div style="margin-top:14px"><label>Como lida com mudanças e desafios?</label><div class="chips"><label class="chip"><input type="checkbox" name="lida_mudancas" value="Ansiedade"> Ansiedade</label><label class="chip"><input type="checkbox" name="lida_mudancas" value="Medo"> Medo</label><label class="chip"><input type="checkbox" name="lida_mudancas" value="Trava/Evita"> Trava/Evita</label><label class="chip"><input type="checkbox" name="lida_mudancas" value="Enfrenta"> Enfrenta</label><label class="chip"><input type="checkbox" name="lida_mudancas" value="Outro"> Outro</label></div></div>
+<div style="margin-top:14px"><label>Organização e rotina</label><div class="chips"><label class="chip"><input type="checkbox" name="organizacao" value="Dificuldade de priorizar e manter ações"> Dificuldade de priorizar e manter ações</label><label class="chip"><input type="checkbox" name="organizacao" value="Procrastinação"> Procrastinação</label><label class="chip"><input type="checkbox" name="organizacao" value="Potencial não vira ação"> Potencial não vira ação</label></div></div>
+</div>
 
-    <label>Filhos?</label>
-    <select id="filhos"><option value="">Selecione</option><option>Não</option><option>Sim</option></select>
+<div class="card">
+<span class="tag">Seção 5</span>
+<h2>Vínculos e Campos Energéticos</h2>
+<div class="chips"><label class="chip"><input type="checkbox" name="vinculos" value="Pessoa do passado ainda presente energeticamente"> Pessoa do passado ainda presente energeticamente</label><label class="chip"><input type="checkbox" name="vinculos" value="Desconforto em lugar/pessoa sem motivo"> Desconforto em lugar/pessoa sem motivo</label><label class="chip"><input type="checkbox" name="vinculos" value="Sente que carrega energia de outra pessoa"> Sente que carrega energia de outra pessoa</label><label class="chip"><input type="checkbox" name="vinculos" value="Sensação de nó/cordão energético"> Sensação de nó/cordão energético</label></div>
+<label style="margin-top:14px">Se sim, descreva</label><textarea name="vinculos_desc"></textarea>
+</div>
 
-    <h2>1. Como você está chegando aqui?</h2>
-    <label>Descreva suas queixas principais (emocionais, físicas, mentais)</label>
-    <textarea id="queixa" placeholder="Conte com suas palavras..."></textarea>
+<div class="card">
+<span class="tag">Seção 6</span>
+<h2>O que você busca?</h2>
+<label>Se este processo funcionasse bem nos próximos 30 dias, como gostaria de se sentir?</label><textarea name="objetivo_30dias"></textarea>
+<label style="margin-top:14px">O que é mais importante agora?</label>
+<div class="chips" style="margin-top:8px">
+<label class="chip"><input type="checkbox" name="importante" value="Acalmar mente"> Acalmar mente</label>
+<label class="chip"><input type="checkbox" name="importante" value="Entender emoções"> Entender emoções</label>
+<label class="chip"><input type="checkbox" name="importante" value="Melhorar relacionamentos"> Melhorar relacionamentos</label>
+<label class="chip"><input type="checkbox" name="importante" value="Recuperar energia"> Recuperar energia</label>
+<label class="chip"><input type="checkbox" name="importante" value="Encontrar direção"> Encontrar direção</label>
+<label class="chip"><input type="checkbox" name="importante" value="Fortalecer autoestima"> Fortalecer autoestima</label>
+<label class="chip"><input type="checkbox" name="importante" value="Superar travas"> Superar travas</label>
+<label class="chip"><input type="checkbox" name="importante" value="Integrar espiritualidade"> Integrar espiritualidade</label>
+</div>
+<input type="text" name="importante_outro" placeholder="Outro - qual?" style="margin-top:10px">
+</div>
 
-    <label>Principal queixa (em uma frase)</label>
-    <input type="text" id="queixaFrase">
+<div class="card">
+<span class="tag">Seção 7</span>
+<h2>Informações Complementares</h2>
+<div class="grid2">
+<div><label>Acompanhamento psicológico/psiquiátrico</label><div class="radio-row"><label class="chip"><input type="radio" name="acompanhamento" value="Não"> Não</label><label class="chip"><input type="radio" name="acompanhamento" value="Sim"> Sim</label></div></div>
+<div><label>Medicação (psiquiátrica/outra) - Qual?</label><input type="text" name="medicacao_complementar"></div>
+</div>
+<div class="grid2" style="margin-top:14px">
+<div><label>Crença espiritual/prática</label><input type="text" name="crenca"></div>
+<div><label>Interesse em meditação, lei da atração etc</label><input type="text" name="interesse_espiritual"></div>
+</div>
+</div>
 
-    <div class="row">
-      <div><label>Intensidade agora (0 a 10)</label><input type="number" id="intensidade" min="0" max="10"></div>
-      <div><label>Há quanto tempo?</label><input type="text" id="tempo"></div>
-    </div>
+<div class="card" style="border:1px dashed var(--sage);background:#f8faf8">
+<span class="tag" style="background:#fff">Seção 8 - Uso do Terapeuta (opcional)</span>
+<h2>Para uso interno - não aparece no WhatsApp do cliente se deixar em branco</h2>
+<div class="chips" style="margin-top:10px"><label class="chip"><input type="checkbox" name="feridas" value="Rejeição"> Rejeição</label><label class="chip"><input type="checkbox" name="feridas" value="Abandono"> Abandono</label><label class="chip"><input type="checkbox" name="feridas" value="Injustiça"> Injustiça</label><label class="chip"><input type="checkbox" name="feridas" value="Humilhação"> Humilhação</label><label class="chip"><input type="checkbox" name="feridas" value="Traição"> Traição</label></div>
+<textarea name="hipoteses" placeholder="Hipóteses, padrões energéticos, protocolo floral, observações..." style="margin-top:10px"></textarea>
+</div>
 
-    <label>Identifica gatilho ou origem?</label>
-    <input type="text" id="gatilho">
+<div class="card" style="text-align:center">
+<h2 style="text-align:center">Pronto para enviar?</h2><p style="color:var(--muted);font-size:13px">Ao clicar, abre seu WhatsApp com tudo formatado. Nenhum dado é salvo online.</p>
+<div class="actions" style="justify-content:center;margin-top:16px">
+<button type="button" class="btn btn-ghost" onclick="copiarTexto()">📋 Copiar texto</button>
+<button type="button" class="btn btn-ghost" onclick="limpar()">Limpar</button>
+</div>
+<button type="submit" class="btn btn-primary" style="margin-top:14px;font-size:18px;padding:18px">💬 Enviar para WhatsApp (41) 99682-4622</button>
+<small class="help" style="display:block;margin-top:10px">Será enviado para 55 41 99682-4622</small>
+</div>
 
-    <label>Já conhece Terapia Floral?</label>
-    <select id="conheceFloral"><option value="">Selecione</option><option>Sim</option><option>Não</option></select>
-
-    <h2>2. Mapa do seu corpo</h2>
-    <div class="check-group">
-      <label><input type="checkbox" name="corpo" value="Dores/tensões"> Dores ou tensões</label>
-      <label><input type="checkbox" name="corpo" value="Cansaço físico constante"> Cansaço físico constante</label>
-      <label><input type="checkbox" name="corpo" value="Energia oscilante"> Energia oscilante</label>
-      <label><input type="checkbox" name="corpo" value="Baixa energia"> Baixa energia</label>
-    </div>
-    <label>Onde sente dores/tensões?</label>
-    <input type="text" id="ondeDores">
-
-    <label>Sono</label>
-    <select id="sono">
-      <option value="">Selecione</option>
-      <option>Dorme bem</option><option>Dorme mal</option>
-      <option>Acorda muitas vezes</option><option>Oscilação de qualidade</option>
-    </select>
-
-    <label>Alimentação / Hidratação</label>
-    <input type="text" id="alimentacao">
-
-    <label>Doenças crônicas</label>
-    <input type="text" id="doencas" placeholder="Hipertensão, diabetes, outras...">
-
-    <label>Medicamentos em uso</label>
-    <input type="text" id="medicamentos" placeholder="Quais? Ou 'nenhum'">
-
-    <label>Hábitos</label>
-    <div class="check-group">
-      <label><input type="checkbox" name="habitos" value="Exercício físico"> Exercício físico</label>
-      <label><input type="checkbox" name="habitos" value="Tabagismo"> Tabagismo</label>
-      <label><input type="checkbox" name="habitos" value="Álcool"> Álcool</label>
-      <label><input type="checkbox" name="habitos" value="Outras substâncias"> Outras substâncias</label>
-    </div>
-
-    <h2>3. Mapa das suas emoções</h2>
-    <p style="font-size:0.85rem;color:#8a7a6a;margin:0 0 8px;">Assinale tudo o que estiver presente:</p>
-    <div class="check-group">
-      <label><input type="checkbox" name="emocao" value="Ansiedade"> Ansiedade</label>
-      <label><input type="checkbox" name="emocao" value="Medo"> Medo</label>
-      <label><input type="checkbox" name="emocao" value="Insegurança"> Insegurança</label>
-      <label><input type="checkbox" name="emocao" value="Cansaço mental"> Cansaço mental</label>
-      <label><input type="checkbox" name="emocao" value="Sobrecarga"> Sobrecarga</label>
-      <label><input type="checkbox" name="emocao" value="Dificuldade de dizer não"> Dificuldade de dizer não</label>
-      <label><input type="checkbox" name="emocao" value="Solidão interna"> Solidão interna</label>
-      <label><input type="checkbox" name="emocao" value="Sensibilidade elevada"> Sensibilidade elevada</label>
-      <label><input type="checkbox" name="emocao" value="Pânico"> Pânico</label>
-      <label><input type="checkbox" name="emocao" value="Tristeza/Depressão"> Tristeza / Depressão</label>
-      <label><input type="checkbox" name="emocao" value="Angústia"> Angústia</label>
-      <label><input type="checkbox" name="emocao" value="Vazio interno"> Vazio interno</label>
-      <label><input type="checkbox" name="emocao" value="Mágoa"> Mágoa</label>
-      <label><input type="checkbox" name="emocao" value="Culpa"> Culpa</label>
-      <label><input type="checkbox" name="emocao" value="Raiva"> Raiva / Irritabilidade</label>
-      <label><input type="checkbox" name="emocao" value="Indecisão"> Indecisão / Travamento</label>
-      <label><input type="checkbox" name="emocao" value="Falta de direção"> Falta de direção</label>
-      <label><input type="checkbox" name="emocao" value="Apatia"> Apatia / Desânimo</label>
-      <label><input type="checkbox" name="emocao" value="Submissão"> Submissão</label>
-      <label><input type="checkbox" name="emocao" value="Rigidez"> Rigidez</label>
-      <label><input type="checkbox" name="emocao" value="Ciúmes"> Ciúmes / Posse</label>
-      <label><input type="checkbox" name="emocao" value="Estagnação"> Estagnação</label>
-      <label><input type="checkbox" name="emocao" value="Timidez"> Timidez</label>
-      <label><input type="checkbox" name="emocao" value="Paranoia"> Ideias obsessivas / Paranoia</label>
-      <label><input type="checkbox" name="emocao" value="Dispersão"> Falta de concentração</label>
-      <label><input type="checkbox" name="emocao" value="Desconexão"> Desconexão / sem chão</label>
-    </div>
-
-    <label>Emoção predominante hoje</label>
-    <input type="text" id="emocaoPredominante">
-
-    <label>Sintomas ligados a ciclo hormonal (TPM / Menopausa / Andropausa)</label>
-    <input type="text" id="hormonal" placeholder="Descreva ou deixe em branco">
-
-    <h2>4. Padrões e História</h2>
-    <label>Relacionamento com a Mãe</label>
-    <input type="text" id="mae">
-
-    <label>Relacionamento com o Pai</label>
-    <input type="text" id="pai">
-
-    <label>Irmãos (quantos e relacionamento)</label>
-    <input type="text" id="irmaos">
-
-    <label>Parceiro(a) / Cônjuge</label>
-    <input type="text" id="parceiro">
-
-    <label>Fale um pouco da sua infância (lembranças boas, momentos difíceis)</label>
-    <textarea id="infancia"></textarea>
-
-    <label>Vida profissional – Gosta do que faz?</label>
-    <input type="text" id="profissaoGosta" placeholder="Sim/Não e por quê">
-
-    <label>O que te mantém nesse trabalho?</label>
-    <input type="text" id="profissaoMantem">
-
-    <label>Como lida com mudanças e desafios</label>
-    <input type="text" id="mudancas" placeholder="Ansiedade, medo, trava/evita, enfrenta...">
-
-    <label>Organização e rotina</label>
-    <input type="text" id="rotina" placeholder="Dificuldade de priorizar, procrastinação...">
-
-    <h2>5. Vínculos e Campos Energéticos</h2>
-    <div class="check-group" style="grid-template-columns:1fr;">
-      <label><input type="checkbox" name="vinculo" value="Pensa em pessoa do passado com frequência"> Penso em alguém do passado com frequência, mesmo sem querer</label>
-      <label><input type="checkbox" name="vinculo" value="Sente peso ao lembrar"> Sinto desconforto/peso ao lembrar dessa pessoa</label>
-      <label><input type="checkbox" name="vinculo" value="Afastou fisicamente mas sente energia"> Já me afastei fisicamente, mas ainda sinto a energia dela</label>
-      <label><input type="checkbox" name="vinculo" value="Sente cordão energético"> Sinto um nó/cordão energético me ligando a alguém</label>
-    </div>
-    <label>Se sim, descreva brevemente (opcional)</label>
-    <textarea id="vinculoDesc"></textarea>
-
-    <h2>6. O que você busca?</h2>
-    <label>Se este processo funcionasse bem em 30 dias, como gostaria de se sentir?</label>
-    <textarea id="buscaSentir"></textarea>
-
-    <label>O que é mais importante agora?</label>
-    <div class="check-group">
-      <label><input type="checkbox" name="busca" value="Acalmar mente/ansiedade"> Acalmar mente/ansiedade</label>
-      <label><input type="checkbox" name="busca" value="Regular emoções"> Regular emoções</label>
-      <label><input type="checkbox" name="busca" value="Melhorar relacionamentos"> Melhorar relacionamentos</label>
-      <label><input type="checkbox" name="busca" value="Recuperar energia"> Recuperar energia</label>
-      <label><input type="checkbox" name="busca" value="Encontrar direção"> Encontrar direção</label>
-      <label><input type="checkbox" name="busca" value="Fortalecer autoestima"> Fortalecer autoestima</label>
-      <label><input type="checkbox" name="busca" value="Superar travas"> Superar travas</label>
-      <label><input type="checkbox" name="busca" value="Integrar espiritualidade"> Integrar espiritualidade</label>
-    </div>
-
-    <h2>7. Informações Complementares</h2>
-    <label>Acompanhamento psicológico/psiquiátrico?</label>
-    <select id="acompanhamento"><option value="">Selecione</option><option>Sim</option><option>Não</option></select>
-
-    <label>Medicação?</label>
-    <input type="text" id="medicacao" placeholder="Sim/Não e qual">
-
-    <label>Crença espiritual / prática</label>
-    <textarea id="crenca"></textarea>
-
-    <button type="button" class="btn-preview" onclick="mostrarPrevia()">👁️ Ver prévia da mensagem</button>
-    <button type="button" class="btn" onclick="enviarWhatsApp()">📲 Enviar para WhatsApp</button>
-    <p class="note">O botão abre o WhatsApp com todas as respostas prontas. Você só confirma o envio.</p>
-
-    <div id="preview">
-      <h3>Prévia da mensagem que será enviada:</h3>
-      <div id="previewBox"></div>
-    </div>
-  </form>
+</form>
 </div>
 
 <script>
-function valor(id) {
-  const el = document.getElementById(id);
-  return el && el.value.trim() ? el.value.trim() : "—";
+const form=document.getElementById('ficha');
+const bar=document.getElementById('barFill');const progText=document.getElementById('progText');
+function updateProgress(){
+ const els=form.querySelectorAll('input, textarea, select'); let filled=0;
+ els.forEach(e=>{
+   if(e.type==='checkbox' || e.type==='radio'){ if(e.checked) filled++; }
+   else if(e.value && e.value.trim()!=='') filled++;
+ });
+ const total=els.length||1; const pct=Math.min(100, Math.round((filled/total)*100*2.2));
+ bar.style.width=pct+'%'; progText.textContent=pct+'% preenchido';
+}
+form.addEventListener('input',updateProgress);form.addEventListener('change',updateProgress);
+
+function getVals(name){
+ return [...form.querySelectorAll(`[name="${name}"]:checked`)].map(e=>e.value).join(', ');
+}
+function val(name){const el=form.querySelector(`[name="${name}"]`); return el?el.value.trim():'';}
+
+function buildMessage(){
+ const linhas=[];
+ linhas.push('📋 *FICHA DE ACOLHIMENTO INTEGRATIVO - CONSOLIDADA*');
+ linhas.push('Um espaço seguro para você se expressar');
+ linhas.push('━━━━━━━━━━━━━━━━━━━━');
+ linhas.push(`*Data:* ${val('data_acolhimento')} ${val('horario')} | *Cidade:* ${val('cidade')}`);
+ linhas.push(`*Nome:* ${val('nome')}`);
+ linhas.push(`*Nasc:* ${val('nascimento')} | *Gênero:* ${val('genero')} | *Est Civil:* ${val('estado_civil')}`);
+ linhas.push(`*Contato:* ${val('contato')} | *End:* ${val('endereco')}`);
+ linhas.push(`*Profissão:* ${val('profissao')} | *Escolaridade:* ${val('escolaridade')} | *Religião:* ${val('religiao')}`);
+ linhas.push(`*Filhos:* ${getVals('filhos')||val('filhos')} ${val('filhos_qtd')}`);
+ linhas.push('');
+ linhas.push('--- *1. COMO ESTÁ CHEGANDO* ---');
+ linhas.push(`*Queixas:* ${val('queixas_principais')}`);
+ linhas.push(`*Frase principal:* ${val('queixa_frase')}`);
+ linhas.push(`*Intensidade:* ${val('intensidade')}/10 | *Há quanto tempo:* ${val('tempo_queixa')}`);
+ linhas.push(`*Gatilho:* ${val('gatilho')}`);
+ linhas.push(`*Conhece Floral:* ${getVals('conhece_floral')} | ${val('floral_explicacao')}`);
+ linhas.push('');
+ linhas.push('--- *2. MAPA DO CORPO* ---');
+ linhas.push(`*Dores:* ${val('dores')}`);
+ linhas.push(`*Energia:* ${getVals('energia')}`);
+ linhas.push(`*Sono:* ${getVals('sono')} - ${val('sono_porque')}`);
+ linhas.push(`*Alimentação:* ${val('alimentacao')}`);
+ linhas.push(`*Doenças:* ${getVals('doencas')} ${val('doencas_outras')}`);
+ linhas.push(`*Cirurgias:* ${val('cirurgias')}`);
+ linhas.push(`*Medicamentos:* ${getVals('medicamentos_uso')} ${val('medicamentos_quais')}`);
+ linhas.push(`*Hábitos:* ${getVals('habitos')}`);
+ linhas.push(`*Manias:* ${val('manias')}`);
+ linhas.push('');
+ linhas.push('--- *3. MAPA DAS EMOÇÕES* ---');
+ linhas.push(`*Emoções frequentes:* ${getVals('emocoes')} ${val('emocoes_outros')}`);
+ linhas.push(`*Predominante hoje:* ${val('emocao_hoje')}`);
+ linhas.push(`*Hormonal:* ${getVals('hormonal')} ${val('hormonal_sintomas')}`);
+ linhas.push('');
+ linhas.push('--- *4. PADRÕES E HISTÓRIA* ---');
+ linhas.push(`*Mãe:* ${val('mae')} | *Pai:* ${val('pai')}`);
+ linhas.push(`*Irmãos:* ${val('irmaos')} | *Parceiro:* ${val('parceiro')} | *Filhos:* ${val('filhos_relacao')}`);
+ linhas.push(`*Infância:* ${val('infancia')}`);
+ linhas.push(`*Trabalho gosta?* ${getVals('gosta_trabalho')} | Por que: ${val('trabalho_porque')}`);
+ linhas.push(`*Pensou mudar?* ${getVals('pensou_mudar')} | O que mantém: ${val('mantem_trabalho')}`);
+ linhas.push(`*Lida com mudanças:* ${getVals('lida_mudancas')}`);
+ linhas.push(`*Organização:* ${getVals('organizacao')}`);
+ linhas.push('');
+ linhas.push('--- *5. VÍNCULOS ENERGÉTICOS* ---');
+ linhas.push(`${getVals('vinculos')}`);
+ linhas.push(`${val('vinculos_desc')}`);
+ linhas.push('');
+ linhas.push('--- *6. O QUE BUSCA* ---');
+ linhas.push(`*30 dias:* ${val('objetivo_30dias')}`);
+ linhas.push(`*Mais importante agora:* ${getVals('importante')} ${val('importante_outro')}`);
+ linhas.push('');
+ linhas.push('--- *7. COMPLEMENTAR* ---');
+ linhas.push(`*Acompanhamento psi:* ${getVals('acompanhamento')} | *Medicação:* ${val('medicacao_complementar')}`);
+ linhas.push(`*Crença:* ${val('crenca')} | *Interesse espiritual:* ${val('interesse_espiritual')}`);
+ const hip=val('hipoteses'); const fer=getVals('feridas');
+ if(hip||fer){
+   linhas.push('');
+   linhas.push('--- *8. TERAPEUTA (interno)* ---');
+   if(fer) linhas.push(`*Feridas:* ${fer}`);
+   if(hip) linhas.push(`${hip}`);
+ }
+ return linhas.join('\n');
 }
 
-function checks(nome) {
-  const marcados = [...document.querySelectorAll(`input[name="${nome}"]:checked`)].map(c => c.value);
-  return marcados.length ? marcados.join(", ") : "—";
+form.addEventListener('submit', (e)=>{
+ e.preventDefault();
+ if(!val('nome')||!val('contato')){alert('Preencha Nome e Contato *');return;}
+ const msg=buildMessage();
+ const url=`https://wa.me/5541996824622?text=${encodeURIComponent(msg)}`;
+ window.open(url,'_blank');
+});
+
+function copiarTexto(){
+ const msg=buildMessage();
+ navigator.clipboard.writeText(msg).then(()=>alert('Texto copiado! Cole no WhatsApp se o botão não abrir.'));
 }
-
-function montarMensagem() {
-  return `📋 *FICHA DE ACOLHIMENTO INTEGRATIVO*
-
-*DADOS PESSOAIS*
-Nome: ${valor("nome")}
-Nascimento: ${valor("nasc")} ${valor("hora") !== "—" ? "às " + valor("hora") : ""}
-Cidade/UF: ${valor("cidade")}
-Contato: ${valor("contato")}
-Profissão: ${valor("profissao")}
-Estado Civil: ${valor("estadocivil")}
-Religião/Prática: ${valor("religiao")}
-Filhos: ${valor("filhos")}
-
-*1. COMO ESTÁ CHEGANDO*
-Queixa: ${valor("queixa")}
-Principal queixa: ${valor("queixaFrase")}
-Intensidade (0-10): ${valor("intensidade")}
-Há quanto tempo: ${valor("tempo")}
-Gatilho/origem: ${valor("gatilho")}
-Conhece Terapia Floral: ${valor("conheceFloral")}
-
-*2. MAPA DO CORPO*
-Sinais: ${checks("corpo")}
-Onde sente dores: ${valor("ondeDores")}
-Sono: ${valor("sono")}
-Alimentação/Hidratação: ${valor("alimentacao")}
-Doenças crônicas: ${valor("doencas")}
-Medicamentos: ${valor("medicamentos")}
-Hábitos: ${checks("habitos")}
-
-*3. MAPA DAS EMOÇÕES*
-Emoções: ${checks("emocao")}
-Predominante: ${valor("emocaoPredominante")}
-Ciclo hormonal: ${valor("hormonal")}
-
-*4. PADRÕES E HISTÓRIA*
-Mãe: ${valor("mae")}
-Pai: ${valor("pai")}
-Irmãos: ${valor("irmaos")}
-Parceiro(a): ${valor("parceiro")}
-Infância: ${valor("infancia")}
-Gosta do trabalho: ${valor("profissaoGosta")}
-O que mantém: ${valor("profissaoMantem")}
-Mudanças/desafios: ${valor("mudancas")}
-Rotina: ${valor("rotina")}
-
-*5. VÍNCULOS E CAMPOS ENERGÉTICOS*
-Marcações: ${checks("vinculo")}
-Descrição: ${valor("vinculoDesc")}
-
-*6. O QUE BUSCA*
-Como quer se sentir: ${valor("buscaSentir")}
-Prioridades: ${checks("busca")}
-
-*7. COMPLEMENTARES*
-Acompanhamento: ${valor("acompanhamento")}
-Medicação: ${valor("medicacao")}
-Crença/prática: ${valor("crenca")}`;
+function limpar(){
+ if(confirm('Limpar tudo?')){form.reset();updateProgress();window.scrollTo(0,0);}
 }
-
-function mostrarPrevia() {
-  document.getElementById("previewBox").textContent = montarMensagem();
-  document.getElementById("preview").style.display = "block";
-  document.getElementById("preview").scrollIntoView({ behavior: "smooth" });
-}
-
-function enviarWhatsApp() {
-  const numero = "5541996824622";
-  const texto = montarMensagem();
-  const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
-
-  const janela = window.open(url, "_blank");
-  if (!janela) {
-    alert("O navegador bloqueou a abertura. Vou tentar redirecionar a mesma página.");
-    window.location.href = url;
-  }
-}
+updateProgress();
 </script>
 </body>
 </html>
