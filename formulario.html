@@ -8,84 +8,47 @@
   * { box-sizing: border-box; }
   body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f4f1ea;
-    margin: 0;
-    padding: 20px;
-    color: #2e2a24;
+    background: #f4f1ea; margin: 0; padding: 20px; color: #2e2a24;
   }
   .container {
-    max-width: 780px;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    max-width: 800px; margin: 0 auto; background: #fff;
+    border-radius: 14px; box-shadow: 0 4px 24px rgba(0,0,0,0.08);
     padding: 32px 28px;
   }
-  h1 {
-    font-size: 1.5rem;
-    text-align: center;
-    color: #5a4a3a;
-    margin-bottom: 4px;
-  }
-  .subtitle {
-    text-align: center;
-    font-size: 0.9rem;
-    color: #8a7a6a;
-    margin-bottom: 28px;
-    font-style: italic;
-  }
-  h2 {
-    font-size: 1.05rem;
-    color: #6b5540;
-    border-bottom: 2px solid #e8dfd2;
-    padding-bottom: 6px;
-    margin-top: 32px;
-  }
+  h1 { font-size: 1.5rem; text-align: center; color: #5a4a3a; margin-bottom: 4px; }
+  .subtitle { text-align: center; font-size: 0.9rem; color: #8a7a6a; margin-bottom: 28px; font-style: italic; }
+  h2 { font-size: 1.05rem; color: #6b5540; border-bottom: 2px solid #e8dfd2; padding-bottom: 6px; margin-top: 32px; }
   label { display: block; margin: 14px 0 4px; font-weight: 600; font-size: 0.92rem; }
   input[type="text"], input[type="date"], input[type="time"], input[type="number"], textarea, select {
-    width: 100%;
-    padding: 9px 12px;
-    border: 1px solid #d5cbbd;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-family: inherit;
-    background: #fdfcf9;
+    width: 100%; padding: 9px 12px; border: 1px solid #d5cbbd; border-radius: 8px;
+    font-size: 0.95rem; font-family: inherit; background: #fdfcf9;
   }
   textarea { min-height: 70px; resize: vertical; }
   .row { display: flex; gap: 12px; flex-wrap: wrap; }
   .row > div { flex: 1; min-width: 140px; }
   .check-group { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; margin: 8px 0 4px; }
-  .check-group label {
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    margin: 0;
-    font-size: 0.9rem;
-  }
+  .check-group label { font-weight: 400; display: flex; align-items: center; gap: 7px; margin: 0; font-size: 0.9rem; }
   .check-group input[type="checkbox"] { width: 17px; height: 17px; accent-color: #8a6d4f; }
-  .full { grid-column: 1 / -1; }
   .btn {
-    display: block;
-    width: 100%;
-    margin-top: 34px;
-    padding: 16px;
-    background: #25D366;
-    color: #fff;
-    font-size: 1.05rem;
-    font-weight: 700;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.2s;
+    display: block; width: 100%; margin-top: 34px; padding: 16px;
+    background: #25D366; color: #fff; font-size: 1.05rem; font-weight: 700;
+    border: none; border-radius: 10px; cursor: pointer; transition: background 0.2s;
   }
   .btn:hover { background: #1eb85a; }
-  .note {
-    text-align: center;
-    font-size: 0.78rem;
-    color: #9a8a7a;
-    margin-top: 10px;
+  .btn-preview {
+    display: block; width: 100%; margin-top: 12px; padding: 14px;
+    background: #6b5540; color: #fff; font-size: 0.95rem; font-weight: 600;
+    border: none; border-radius: 10px; cursor: pointer;
   }
+  .btn-preview:hover { background: #58432f; }
+  .note { text-align: center; font-size: 0.78rem; color: #9a8a7a; margin-top: 10px; }
+  #preview {
+    margin-top: 24px; padding: 18px; background: #faf8f3;
+    border: 1px solid #e0d6c8; border-radius: 10px; white-space: pre-wrap;
+    font-size: 0.85rem; line-height: 1.5; display: none;
+  }
+  #preview h3 { margin: 0 0 10px; color: #6b5540; font-size: 1rem; }
+  #previewBox { max-height: 400px; overflow-y: auto; }
   @media (max-width: 520px) {
     .check-group { grid-template-columns: 1fr; }
     .container { padding: 22px 16px; }
@@ -97,57 +60,33 @@
   <h1>📋 Ficha de Acolhimento Integrativo</h1>
   <p class="subtitle">Um espaço seguro para você se expressar</p>
 
-  <form id="fichaForm">
+  <form id="fichaForm" onsubmit="return false;">
 
-    <!-- DADOS PESSOAIS -->
     <h2>Dados Pessoais</h2>
     <label>Nome completo</label>
     <input type="text" id="nome" placeholder="Seu nome">
 
     <div class="row">
-      <div>
-        <label>Data de Nascimento</label>
-        <input type="date" id="nasc">
-      </div>
-      <div>
-        <label>Horário (se souber)</label>
-        <input type="time" id="hora">
-      </div>
+      <div><label>Data de Nascimento</label><input type="date" id="nasc"></div>
+      <div><label>Horário (se souber)</label><input type="time" id="hora"></div>
     </div>
 
     <label>Cidade / UF</label>
     <input type="text" id="cidade" placeholder="Ex: Curitiba – PR">
 
     <div class="row">
-      <div>
-        <label>Contato (opcional)</label>
-        <input type="text" id="contato" placeholder="Tel ou e-mail">
-      </div>
-      <div>
-        <label>Profissão</label>
-        <input type="text" id="profissao">
-      </div>
+      <div><label>Contato (opcional)</label><input type="text" id="contato" placeholder="Tel ou e-mail"></div>
+      <div><label>Profissão</label><input type="text" id="profissao"></div>
     </div>
 
     <div class="row">
-      <div>
-        <label>Estado Civil</label>
-        <input type="text" id="estadocivil">
-      </div>
-      <div>
-        <label>Religião / Prática Espiritual</label>
-        <input type="text" id="religiao">
-      </div>
+      <div><label>Estado Civil</label><input type="text" id="estadocivil"></div>
+      <div><label>Religião / Prática Espiritual</label><input type="text" id="religiao"></div>
     </div>
 
     <label>Filhos?</label>
-    <select id="filhos">
-      <option value="">Selecione</option>
-      <option>Não</option>
-      <option>Sim</option>
-    </select>
+    <select id="filhos"><option value="">Selecione</option><option>Não</option><option>Sim</option></select>
 
-    <!-- 1. CHEGADA -->
     <h2>1. Como você está chegando aqui?</h2>
     <label>Descreva suas queixas principais (emocionais, físicas, mentais)</label>
     <textarea id="queixa" placeholder="Conte com suas palavras..."></textarea>
@@ -156,27 +95,16 @@
     <input type="text" id="queixaFrase">
 
     <div class="row">
-      <div>
-        <label>Intensidade agora (0 a 10)</label>
-        <input type="number" id="intensidade" min="0" max="10">
-      </div>
-      <div>
-        <label>Há quanto tempo?</label>
-        <input type="text" id="tempo">
-      </div>
+      <div><label>Intensidade agora (0 a 10)</label><input type="number" id="intensidade" min="0" max="10"></div>
+      <div><label>Há quanto tempo?</label><input type="text" id="tempo"></div>
     </div>
 
     <label>Identifica gatilho ou origem?</label>
     <input type="text" id="gatilho">
 
     <label>Já conhece Terapia Floral?</label>
-    <select id="conheceFloral">
-      <option value="">Selecione</option>
-      <option>Sim</option>
-      <option>Não</option>
-    </select>
+    <select id="conheceFloral"><option value="">Selecione</option><option>Sim</option><option>Não</option></select>
 
-    <!-- 2. CORPO -->
     <h2>2. Mapa do seu corpo</h2>
     <div class="check-group">
       <label><input type="checkbox" name="corpo" value="Dores/tensões"> Dores ou tensões</label>
@@ -190,10 +118,8 @@
     <label>Sono</label>
     <select id="sono">
       <option value="">Selecione</option>
-      <option>Dorme bem</option>
-      <option>Dorme mal</option>
-      <option>Acorda muitas vezes</option>
-      <option>Oscilação de qualidade</option>
+      <option>Dorme bem</option><option>Dorme mal</option>
+      <option>Acorda muitas vezes</option><option>Oscilação de qualidade</option>
     </select>
 
     <label>Alimentação / Hidratação</label>
@@ -213,7 +139,6 @@
       <label><input type="checkbox" name="habitos" value="Outras substâncias"> Outras substâncias</label>
     </div>
 
-    <!-- 3. EMOÇÕES -->
     <h2>3. Mapa das suas emoções</h2>
     <p style="font-size:0.85rem;color:#8a7a6a;margin:0 0 8px;">Assinale tudo o que estiver presente:</p>
     <div class="check-group">
@@ -251,7 +176,6 @@
     <label>Sintomas ligados a ciclo hormonal (TPM / Menopausa / Andropausa)</label>
     <input type="text" id="hormonal" placeholder="Descreva ou deixe em branco">
 
-    <!-- 4. PADRÕES -->
     <h2>4. Padrões e História</h2>
     <label>Relacionamento com a Mãe</label>
     <input type="text" id="mae">
@@ -280,7 +204,6 @@
     <label>Organização e rotina</label>
     <input type="text" id="rotina" placeholder="Dificuldade de priorizar, procrastinação...">
 
-    <!-- 5. VÍNCULOS -->
     <h2>5. Vínculos e Campos Energéticos</h2>
     <div class="check-group" style="grid-template-columns:1fr;">
       <label><input type="checkbox" name="vinculo" value="Pensa em pessoa do passado com frequência"> Penso em alguém do passado com frequência, mesmo sem querer</label>
@@ -291,7 +214,6 @@
     <label>Se sim, descreva brevemente (opcional)</label>
     <textarea id="vinculoDesc"></textarea>
 
-    <!-- 6. BUSCA -->
     <h2>6. O que você busca?</h2>
     <label>Se este processo funcionasse bem em 30 dias, como gostaria de se sentir?</label>
     <textarea id="buscaSentir"></textarea>
@@ -308,14 +230,9 @@
       <label><input type="checkbox" name="busca" value="Integrar espiritualidade"> Integrar espiritualidade</label>
     </div>
 
-    <!-- 7. COMPLEMENTARES -->
     <h2>7. Informações Complementares</h2>
     <label>Acompanhamento psicológico/psiquiátrico?</label>
-    <select id="acompanhamento">
-      <option value="">Selecione</option>
-      <option>Sim</option>
-      <option>Não</option>
-    </select>
+    <select id="acompanhamento"><option value="">Selecione</option><option>Sim</option><option>Não</option></select>
 
     <label>Medicação?</label>
     <input type="text" id="medicacao" placeholder="Sim/Não e qual">
@@ -323,8 +240,14 @@
     <label>Crença espiritual / prática</label>
     <textarea id="crenca"></textarea>
 
+    <button type="button" class="btn-preview" onclick="mostrarPrevia()">👁️ Ver prévia da mensagem</button>
     <button type="button" class="btn" onclick="enviarWhatsApp()">📲 Enviar para WhatsApp</button>
-    <p class="note">Ao clicar, o WhatsApp abrirá com todas as respostas prontas para envio.</p>
+    <p class="note">O botão abre o WhatsApp com todas as respostas prontas. Você só confirma o envio.</p>
+
+    <div id="preview">
+      <h3>Prévia da mensagem que será enviada:</h3>
+      <div id="previewBox"></div>
+    </div>
   </form>
 </div>
 
@@ -339,10 +262,8 @@ function checks(nome) {
   return marcados.length ? marcados.join(", ") : "—";
 }
 
-function enviarWhatsApp() {
-  const numero = "5541996824622"; // seu WhatsApp com DDI 55
-
-  const texto = `📋 *FICHA DE ACOLHIMENTO INTEGRATIVO*
+function montarMensagem() {
+  return `📋 *FICHA DE ACOLHIMENTO INTEGRATIVO*
 
 *DADOS PESSOAIS*
 Nome: ${valor("nome")}
@@ -399,9 +320,24 @@ Prioridades: ${checks("busca")}
 Acompanhamento: ${valor("acompanhamento")}
 Medicação: ${valor("medicacao")}
 Crença/prática: ${valor("crenca")}`;
+}
 
+function mostrarPrevia() {
+  document.getElementById("previewBox").textContent = montarMensagem();
+  document.getElementById("preview").style.display = "block";
+  document.getElementById("preview").scrollIntoView({ behavior: "smooth" });
+}
+
+function enviarWhatsApp() {
+  const numero = "5541996824622";
+  const texto = montarMensagem();
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
-  window.open(url, "_blank");
+
+  const janela = window.open(url, "_blank");
+  if (!janela) {
+    alert("O navegador bloqueou a abertura. Vou tentar redirecionar a mesma página.");
+    window.location.href = url;
+  }
 }
 </script>
 </body>
